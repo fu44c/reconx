@@ -1,28 +1,24 @@
-// ReconX-Go
-// Lightweight modular recon framework.
-// Entry point: loads banner + CLI dispatcher.
-
 package main
 
 import (
 	"fmt"
-	"os"
-
-	"reconx/cmd"
-	"reconx/internal/ascii"
-	"reconx/internal/utils"
+	"github.com/fu44c/reconx/cmd"
 )
 
 func main() {
-	// Initialize logging system before anything else.
-	utils.InitLogger()
+	banner := `
+	
+	____                           
+	|  _ \ ___  ___ ___  _ __ __  __
+	| |_) / _ \/ __/ _ \| '_ \\ \/ /
+	|  _ <  __/ (_| (_) | | | |>  < 
+	|_| \_\___|\___\___/|_| |_/_/\_\
+             
 
-	// Display the ASCII banner once at startup.
-	ascii.ShowBanner()
+			ReconX - Bug Bounty & Recon Tool
+                 Developer: Ahmed ibrahim
+	`
 
-	// Delegate execution to Cobra's command handler.
-	if err := cmd.Execute(); err != nil {
-		fmt.Println("Error:", err)
-		os.Exit(1)
-	}
+	fmt.Println(banner)
+	cmd.Execute()
 }
